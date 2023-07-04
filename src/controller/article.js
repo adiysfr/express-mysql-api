@@ -10,6 +10,7 @@ const getAllArticle = async (req, res) => {
     })
     
   } catch (error) {
+    console.log("🚀 ~ file: article.js:13 ~ getAllArticle ~ error:", error)
     res.status(500).json({
       message: "server error",
       serverMessage: error

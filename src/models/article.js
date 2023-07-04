@@ -6,10 +6,10 @@ const getAllArticle = () => {
 };
 
 const getPaginArticle = (queryParams) => {
-  const page = queryParams.page - 1;
+  const page = queryParams.page;
   const limitPerPage = queryParams.limit;
 
-	const SQLQuery = `SELECT* FROM article LIMIT ${limitPerPage} OFFSET ${( page * 10)/2};`;
+	const SQLQuery = `SELECT* FROM article LIMIT ${limitPerPage} OFFSET ${( page - 1) * limitPerPage};`;
 	return dbPool.execute(SQLQuery);
 };
 //get count data article
