@@ -10,7 +10,6 @@ const getAllArticle = async (req, res) => {
     })
     
   } catch (error) {
-    console.log("🚀 ~ file: article.js:13 ~ getAllArticle ~ error:", error)
     res.status(500).json({
       message: "server error",
       serverMessage: error
@@ -45,7 +44,6 @@ const getPaginArticle = async (req, res) => {
 const createNewArticle = async (req, res) => {
   const {body} = req;
   const file = req.file;
-  console.log("🚀 ~ file: article.js:24 ~ createNewArticle ~ file:", file)
   const bodyArticle ={
     title: body.title,
     poster: file.originalname,

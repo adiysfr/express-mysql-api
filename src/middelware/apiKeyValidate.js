@@ -2,7 +2,7 @@ const ApiKeyModel = require('../models/apiKey')
 
 const apiKeyValidate = async(req, res, next) => {
   const apiHeader = req.header('api-key')
-  if(apiHeader == null) return res.json({message:"api key is empty"})
+  if(apiHeader == null) return res.json({message:"Incorrect API key"})
   try {
     const [data] = await ApiKeyModel.getApiKey();
     const apiKey = data[0].api_key
@@ -10,7 +10,7 @@ const apiKeyValidate = async(req, res, next) => {
       next()
     }else{
       res.status(404).json({
-        message: "api key invalid",
+        message: "Error entering API key",
       })
     }
   } catch (error) {
