@@ -16,8 +16,25 @@ const getAllArticle = async (req, res) => {
     })
   }
 }
+// Get Detail Article
+const getDetailArticleController = async (req, res) => {
+  const {id} = req.query
+  try {
+    const [data] = await ArticlesModel.getDetailArticle(id);
+    res.json({
+      message: "success get data",
+      data: data[0]
+    })
+    
+  } catch (error) {
+    res.status(500).json({
+      message: "server error",
+      serverMessage: error
+    })
+  }
+}
 
-// Get All Article
+// Get Article With Pagination
 const getPaginArticle = async (req, res) => {
   const queryParams = req.query 
 
@@ -67,5 +84,6 @@ const createNewArticle = async (req, res) => {
 module.exports = {
   getAllArticle,
   getPaginArticle,
-  createNewArticle
+  createNewArticle,
+  getDetailArticleController
 }

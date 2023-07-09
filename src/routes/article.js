@@ -6,7 +6,8 @@ const ArticleController = require('../controller/article')
 
 // USERS
 router.get('/', ArticleController.getAllArticle)
-router.get('/paging', ArticleController.getPaginArticle)
+router.get('/detail', ArticleController.getDetailArticleController)
+router.get('/pagination', ArticleController.getPaginArticle)
 router.post('/', upload.single('poster'), ArticleController.createNewArticle)
 
 module.exports = router;
