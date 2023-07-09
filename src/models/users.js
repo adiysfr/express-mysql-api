@@ -15,7 +15,6 @@ const updateUser = (body, id) => {
 	return dbPool.execute(SQLQuery);
 };
 const deleteUser = (id) => {
-	console.log("🚀 ",{id})
 	const SQLQuery = `DELETE FROM users WHERE id=${id}`;
 	return dbPool.execute(SQLQuery);
 };

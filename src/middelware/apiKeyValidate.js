@@ -2,7 +2,7 @@ const ApiKeyModel = require('../models/apiKey')
 
 const apiKeyValidate = async(req, res, next) => {
   const apiHeader = req.header('api-key')
-  if(apiHeader == null) return res.json({message:"Incorrect API key"})
+  if(apiHeader == null) return res.json({message:"Header api-key not found"})
   try {
     const [data] = await ApiKeyModel.getApiKey();
     const apiKey = data[0].api_key
