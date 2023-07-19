@@ -18,7 +18,7 @@ const getAllArticle = async (req, res) => {
 }
 // Get Detail Article
 const getDetailArticleController = async (req, res) => {
-  const {id} = req.query
+  const {id} = req.params
   try {
     const [data] = await ArticlesModel.getDetailArticle(id);
     res.json({
@@ -44,8 +44,9 @@ const getPaginArticle = async (req, res) => {
     res.json({
       message: "success",
       data: data,
-      page: queryParams.page,
-      perPage: queryParams.limit,
+      page: parseInt(queryParams.page),
+      perPage: parseInt(queryParams.limit),
+      totalPage: Math.ceil(countData[0].countData / parseInt(queryParams.limit)),
       totalData: countData[0].countData,
     })
     

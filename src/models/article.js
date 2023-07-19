@@ -6,7 +6,7 @@ const getAllArticle = () => {
 };
 
 const getDetailArticle = (id) => {
-	const SQLQuery = `SELECT article.id, article.title, article_body.body, categories.category_name, article.createdAt, article.updatedAt 
+	const SQLQuery = `SELECT article.id, article.title, article.url, article_body.body, categories.category_name, article.createdAt, article.updatedAt 
 	FROM article INNER JOIN article_body 
 	ON article.id = article_body.id 
 	INNER JOIN categories 
