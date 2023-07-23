@@ -63,9 +63,11 @@ const createNewArticle = async (req, res) => {
   const {body} = req;
   const file = req.file;
   const bodyArticle ={
+    category_id: parseInt(body.category_id),
     title: body.title,
     poster: file.originalname,
-    url: `${req.protocol}://${req.get("host")}/assets/${file.filename}`
+    poster_url: `${req.protocol}://${req.get("host")}/assets/${file.filename}`,
+    content: body.content,
   }
 
   try {

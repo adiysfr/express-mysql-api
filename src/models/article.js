@@ -6,11 +6,10 @@ const getAllArticle = () => {
 };
 
 const getDetailArticle = (id) => {
-	const SQLQuery = `SELECT article.id, article.title, article.url, article_body.body, categories.category_name, article.createdAt, article.updatedAt 
-	FROM article INNER JOIN article_body 
-	ON article.id = article_body.id 
+	const SQLQuery = `SELECT article.id, article.title, article.poster_url, article.content, categories.category_name, article.createdAt, article.updatedAt 
+	FROM article 
 	INNER JOIN categories 
-	ON article.id = categories.id 
+	ON article.category_id = categories.id 
 	WHERE article.id = ${id};`;
 	return dbPool.execute(SQLQuery);
 };
@@ -30,7 +29,7 @@ const getCountArticle = () => {
 };
 
 const createNewArticle = (body) => {
-	const SQLQuery = `INSERT INTO article (title, poster, url, createdAt, updatedAt) VALUES('${body.title}', '${body.poster}', '${body.url}', now(), now())`;
+	const SQLQuery = `INSERT INTO article (category_id, title, content, poster, poster_url, createdAt, updatedAt) VALUES(${body.category_id}, '${body.title}', '${body.content}', '${body.poster}', '${body.poster_url}', now(), now())`;
 	return dbPool.execute(SQLQuery);
 };
 
